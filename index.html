@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red Hat Bootstrap Demo</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Red Hat Display font -->
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --redhat-red: #ee0000;
+            --redhat-dark: #1a1a1a;
+            --redhat-gray: #4c4c4c;
+            --redhat-light: #f5f5f5;
+        }
+        
+        body {
+            font-family: 'Red Hat Display', sans-serif;
+            color: var(--redhat-dark);
+        }
+
+        .navbar {
+            background-color: var(--redhat-red) !important;
+        }
+
+        .bg-redhat {
+            background-color: var(--redhat-red);
+            color: white;
+        }
+
+        .text-redhat {
+            color: var(--redhat-red);
+        }
+
+        .btn-redhat {
+            background-color: var(--redhat-red);
+            color: white;
+            border: none;
+        }
+
+        .btn-redhat:hover {
+            background-color: #cc0000;
+            color: white;
+        }
+
+        .table-redhat thead {
+            background-color: var(--redhat-red);
+            color: white;
+        }
+
+        .image-gallery img {
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+
+        .image-gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: var(--redhat-dark) !important;
+        }
+
+        .section-heading {
+            border-left: 5px solid var(--redhat-red);
+            padding-left: 15px;
+            margin-bottom: 30px;
+        }
+
+        .signup-section {
+            background-color: var(--redhat-light);
+            padding: 3rem 0;
+            margin: 2rem 0;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 4rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .product-image {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-container img {
+            height: 30px;
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand logo-container" href="#">
+                <img src="images/redhat-logo.svg" alt="Red Hat Logo" height="30">
+                Bootstrap Demo
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Enterprise-Grade Solutions</h1>
+            <p class="lead">Empowering developers with enterprise-ready tools and technologies.</p>
+            <button class="btn btn-redhat btn-lg" id="deployBtn" onclick="deployDemo()">Deploy Now</button>
+        </div>
+    </div>
+
+    <!-- Typography Section -->
+    <div class="container mb-5">
+        <h2 class="section-heading">Enterprise Features</h2>
+        
+        <!-- Features -->
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="text-redhat">Secure</h3>
+                <p>Enterprise-grade security from the ground up.</p>
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-redhat">Reliable</h3>
+                <p>Powering the world's most critical workloads.</p>
+            </div>
+            <div class="col-md-4">
+                <h3 class="text-redhat">Scalable</h3>
+                <p>Innovation through open source leadership.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign Up Section -->
+    <div class="signup-section">
+        <div class="container">
+            <h2 class="section-heading">Get Started with Red Hat</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <form onsubmit="handleSignup(event)">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="company" class="form-label">Company</label>
+                            <input type="text" class="form-control" id="company" required>
+                        </div>
+                        <button type="submit" class="btn btn-redhat">Sign Up for Demo</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                         alt="Developers Collaborating" 
+                         class="img-fluid rounded shadow">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Components Section -->
+    <div class="container mb-5">
+        <h2 class="section-heading">Enterprise Components</h2>
+        
+        <!-- Buttons -->
+        <div class="mb-4">
+            <button class="btn btn-redhat me-2" onclick="deployDemo()" id="deployBtn" data-bs-toggle="tooltip" title="Deploy your enterprise solution">Deploy Now</button>
+            <button class="btn btn-outline-dark me-2" onclick="downloadDocs()" data-bs-toggle="tooltip" title="Access comprehensive documentation">Documentation</button>
+            <button class="btn btn-redhat me-2" data-bs-toggle="modal" data-bs-target="#learnMoreModal">Learn More</button>
+        </div>
+    </div>
+
+    <!-- Table Section -->
+    <div class="container mb-5">
+        <h2 class="section-heading">System Requirements</h2>
+        <div class="table-responsive">
+            <table class="table table-hover table-redhat">
+                <thead>
+                    <tr>
+                        <th>Component</th>
+                        <th>Minimum</th>
+                        <th>Recommended</th>
+                        <th>Enterprise</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CPU Cores</td>
+                        <td>2</td>
+                        <td>4</td>
+                        <td>8+</td>
+                    </tr>
+                    <tr>
+                        <td>RAM</td>
+                        <td>4GB</td>
+                        <td>8GB</td>
+                        <td>16GB+</td>
+                    </tr>
+                    <tr>
+                        <td>Storage</td>
+                        <td>20GB</td>
+                        <td>50GB</td>
+                        <td>100GB+</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Image Gallery Section -->
+    <div class="container mb-5">
+        <h2 class="section-heading">Red Hat Solutions</h2>
+        <div class="row image-gallery">
+            <div class="col-md-4">
+                <div class="product-image">
+                    <img src="https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                         class="img-fluid rounded" 
+                         alt="Enterprise Linux">
+                </div>
+                <h4 class="mt-2">Enterprise Linux</h4>
+            </div>
+            <div class="col-md-4">
+                <div class="product-image">
+                    <img src="https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                         class="img-fluid rounded" 
+                         alt="OpenShift">
+                </div>
+                <h4 class="mt-2">OpenShift</h4>
+            </div>
+            <div class="col-md-4">
+                <div class="product-image">
+                    <img src="https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" 
+                         class="img-fluid rounded" 
+                         alt="Ansible Automation">
+                </div>
+                <h4 class="mt-2">Ansible Automation</h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learn More Modal -->
+    <div class="modal fade" id="learnMoreModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Learn More About Red Hat Solutions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Red Hat is the world's leading provider of enterprise open source solutions, using a community-powered approach to deliver high-performing Linux, cloud, container, and Kubernetes technologies.</p>
+                    <ul>
+                        <li>Enterprise Linux</li>
+                        <li>Container Platform</li>
+                        <li>Automation & Management</li>
+                        <li>Cloud Computing</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-redhat" onclick="window.location.href='https://www.redhat.com'">Visit Red Hat</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="text-redhat">About Red Hat Demo</h5>
+                    <p class="text-light">Demonstrating enterprise-ready Bootstrap components with Red Hat's professional styling.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-redhat">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" onclick="downloadDocs()" class="text-light text-decoration-none">Documentation</a></li>
+                        <li><a href="#" onclick="deployDemo()" class="text-light text-decoration-none">Deploy Now</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#learnMoreModal" class="text-light text-decoration-none">Learn More</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="text-redhat">Contact</h5>
+                    <p class="text-light">
+                        Email: enterprise@example.com<br>
+                        Support: 24/7 Enterprise Support
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html>
